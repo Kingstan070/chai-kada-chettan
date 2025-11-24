@@ -46,7 +46,7 @@
               {{ rating }}/10
             </div>
             <div class="flex justify-center gap-1 mb-2">
-              {% for i in range(1, 11) %} {% if i <= rating %}
+              {% for i in range(0, rating) %} {% if i <= rating %}
               <span class="text-orange-500">⭐</span>
               {% else %}
               <span class="text-gray-300">⭐</span>
