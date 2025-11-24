@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Roast - Chai Kada Chattan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-amber-50 min-h-screen py-8 px-4">
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-3xl">
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <div class="text-5xl mb-3">🔥</div>
+        <h1 class="text-2xl md:text-3xl font-bold text-amber-900">
+          Your Roast is Ready!
+        </h1>
+      </div>
+
+      <!-- Roast Card -->
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6">
+        <h2 class="text-xl font-bold text-amber-900 mb-4 flex items-center">
+          <span class="mr-2">📜</span>
+          Chai Kada Chattan Verdict
+        </h2>
+
+        <!-- Roast Text -->
+        <div class="bg-amber-50 rounded-lg p-6 mb-6 border border-orange-200">
+          <p
+            class="text-gray-800 text-base leading-relaxed whitespace-pre-line"
+          >
+            {{ roast_text }}
+          </p>
+        </div>
+
+        <!-- Rating & Snack -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Rating Box -->
+          <div
+            class="bg-orange-50 rounded-lg p-6 text-center border border-orange-200"
+          >
+            <div class="text-sm font-semibold text-gray-600 mb-2">
+              FINAL RATING
+            </div>
+            <div class="text-5xl font-bold text-orange-600 mb-2">
+              {{ rating }}/10
+            </div>
+            <div class="flex justify-center gap-1 mb-2">
+              {% for i in range(1, 11) %} {% if i <= rating %}
+              <span class="text-orange-500">⭐</span>
+              {% else %}
+              <span class="text-gray-300">⭐</span>
+              {% endif %} {% endfor %}
+            </div>
+            <p class="text-sm text-gray-600">
+              {% if rating >= 8 %} Mone… Super aan! 🔥 {% elif rating >= 6 %}
+              Nallathaanu! Keep going! 😊 {% elif rating >= 4 %} Work cheytha
+              mathi... 😅 {% else %} Chai kudichittu puthiya start edukk bro… 😭
+              {% endif %}
+            </p>
+          </div>
+
+          <!-- Snack Box -->
+          <div
+            class="bg-amber-50 rounded-lg p-6 text-center border border-amber-200"
+          >
+            <div class="text-sm font-semibold text-gray-600 mb-3">
+              SNACK GIVEN
+            </div>
+            <div class="text-5xl mb-2">{{ snack_emoji }}</div>
+            <div class="text-lg font-bold text-amber-900 mb-1">
+              {{ snack_name }}
+            </div>
+            <p class="text-sm text-gray-600">{{ snack_description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col md:flex-row gap-4 mb-6">
+        <a
+          href="{{ url_for('index') }}"
+          class="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-center"
+        >
+          🔄 Upload Another
+        </a>
+        <button
+          onclick="window.print()"
+          class="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-center"
+        >
+          🖨️ Print
+        </button>
+      </div>
+
+      <!-- Trials Left -->
+      {% if trials_left is defined and trials_left <= 5 %}
+      <div
+        class="p-4 bg-yellow-50 rounded-lg border border-yellow-400 text-center"
+      >
+        <p class="text-sm font-medium text-yellow-800">
+          ⚠️ {{ trials_left }} free roast(s) remaining today
+        </p>
+      </div>
+      {% endif %}
+
+      <!-- Footer -->
+      <div class="text-center mt-8 text-sm text-gray-500">
+        Made with ☕ in Kerala
+      </div>
+    </main>
+  </body>
+</html>

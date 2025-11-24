@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oops! - Chai Kada Chattan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-amber-50 min-h-screen py-8 px-4">
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-2xl">
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <div class="text-6xl mb-3">😵</div>
+        <h1 class="text-3xl md:text-4xl font-bold text-red-700 mb-2">
+          Ayyo! Entho Preshnam!
+        </h1>
+        <p class="text-gray-600">Something went wrong...</p>
+      </div>
+
+      <!-- Error Card -->
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 mb-6">
+        <div class="text-center mb-6">
+          <div class="text-5xl mb-4">☕💥</div>
+          <p class="text-xl text-gray-700 font-semibold mb-3">
+            Chai kadayil entho sambhavicchu!
+          </p>
+          <p class="text-base text-gray-600">
+            Don't worry, nammal fix cheyyam!
+          </p>
+        </div>
+
+        <!-- Error Message Box (if available) -->
+        {% if error_message %}
+        <div class="bg-red-50 rounded-lg p-6 mb-6 border-l-4 border-red-500">
+          <p class="text-sm font-semibold text-red-700 mb-2">Error Details:</p>
+          <p class="text-sm text-gray-700">{{ error_message }}</p>
+        </div>
+        {% else %}
+        <div
+          class="bg-orange-50 rounded-lg p-6 mb-6 border-l-4 border-orange-500"
+        >
+          <p class="text-gray-700 text-center">
+            Server il entho preshnam undayi. Athokke shari aakkam, korachu time
+            wait cheyyu! 🛠️
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- 🔥 NEW: Gemini API / Server Busy Message (Backend Issue) -->
+        {% if api_overload %}
+        <div
+          class="bg-yellow-50 rounded-lg p-6 mb-6 border-l-4 border-yellow-600"
+        >
+          <p class="text-lg font-bold text-yellow-800 mb-2">
+            Server Full Aayi! 😵
+          </p>
+          <p class="text-sm text-gray-700 mb-4">
+            Chai kada full rush aanu ippo! LLM queue kazhinjittu veendum try
+            cheyyu. Ith technical problem alla — just too many chai requests at
+            the same time! ☕🔥
+          </p>
+
+          <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+            <li>⏳ 1 minute wait cheyth refresh cheyyu</li>
+            <li>🔁 Retry button use cheyyu</li>
+            <li>📧 Still issues? Contact support — chai kudichu fix cheyyam</li>
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Common Issues -->
+        <div class="bg-amber-50 rounded-lg p-6 mb-6 border border-amber-200">
+          <p class="font-semibold text-amber-900 mb-3">Common Issues:</p>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start">
+              <span class="mr-2">📄</span>
+              <span>File size 5MB vilichu vallo? Smaller file try cheyyu</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">⚠️</span>
+              <span>PDF/DOCX format aano? Other formats work aavilla</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">🌐</span>
+              <span>Internet connection check cheyyu</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2">🔄</span>
+              <span>Page refresh cheyth noki</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4">
+          <a
+            href="{{ url_for('index') }}"
+            class="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-center"
+          >
+            🏠 Back to Home
+          </a>
+
+          <button
+            onclick="window.location.reload()"
+            class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+          >
+            🔄 Refresh Page
+          </button>
+
+          <button
+            onclick="window.history.back()"
+            class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            ⬅️ Go Back
+          </button>
+        </div>
+      </div>
+
+      <!-- Help Box -->
+      <div class="bg-white rounded-lg p-6 shadow-md mb-6 text-center">
+        <p class="text-sm text-gray-600 mb-3">Still having issues?</p>
+        <a
+          href="mailto:tallwinkingstan@gmail.com"
+          class="inline-block text-orange-600 hover:text-orange-700 font-semibold hover:underline"
+        >
+          📧 Contact Support
+        </a>
+        <p class="text-xs text-gray-500 mt-3">
+          Nammal oru chai kudikkumbol fix cheyyam! ☕😊
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center text-sm text-gray-500">
+        Made with ☕ in Kerala
+      </div>
+    </main>
+  </body>
+</html>

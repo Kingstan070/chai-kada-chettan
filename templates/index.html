@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Kada Chattan - Resume Roaster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-amber-50 min-h-screen py-8 px-4">
+    
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-2xl">
+        
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <div class="text-6xl mb-3">☕</div>
+            <h1 class="text-3xl md:text-4xl font-bold text-amber-900 mb-2">Chai Kada Chattan</h1>
+            <p class="text-gray-600">Resume Roaster</p>
+        </div>
+
+        <!-- Upload Card -->
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-10">
+            <h2 class="text-2xl font-bold text-amber-900 mb-3 text-center">
+                Upload Resume For Roast 🔥
+            </h2>
+            <p class="text-gray-600 text-center mb-8">
+                Mone, oru resume aano? Idukkola, nammuk veekkam kanikkam! 😎
+            </p>
+            
+            <!-- Upload Form -->
+            <form action="{{ url_for('upload_resume') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                
+                <!-- File Upload Area -->
+                <div class="relative border-2 border-dashed border-orange-400 rounded-lg p-12 bg-amber-50 hover:bg-orange-50 transition-colors duration-300 cursor-pointer">
+                    <input 
+                        type="file" 
+                        name="resume" 
+                        id="resumeFile" 
+                        accept=".pdf,.docx,.doc" 
+                        required 
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        onchange="updateFileName(this)"
+                    >
+                    <div class="text-center pointer-events-none">
+                        <div class="text-5xl mb-3">📄</div>
+                        <p class="text-base font-medium text-amber-900 mb-2">Click cheyyeda file choose cheyyan</p>
+                        <p class="text-sm text-gray-500">PDF or DOCX (Max 5MB)</p>
+                        <p id="fileName" class="mt-4 text-orange-600 font-medium hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                >
+                    Roast Cheyyu 🔥
+                </button>
+            </form>
+
+            <!-- Warning Note -->
+            <div class="mt-6 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                <p class="text-sm text-gray-700">
+                    <span class="font-bold">⚠️ Warning:</span> Ivide kaanunna roast spicy aayirikkum! 😅
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-sm text-gray-500">
+            Made with ☕ in Kerala
+        </div>
+    </main>
+
+    <script>
+        function updateFileName(input) {
+            const fileName = document.getElementById('fileName');
+            if (input.files && input.files[0]) {
+                fileName.textContent = '📎 ' + input.files[0].name;
+                fileName.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
