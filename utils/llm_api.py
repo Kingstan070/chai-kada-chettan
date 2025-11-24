@@ -108,9 +108,14 @@ def get_roast_and_rating(summary: str) -> Tuple[str, int]:
         response = client.models.generate_content(
             model=model,
             contents=safe_prompt,
-            max_output_tokens=800,  # Works on Render / older versions
-            temperature=0.9,
-            top_p=0.9,
+            generationConfig={
+                "maxOutputTokens": 800,
+                "temperature": 0.9,
+                "topP": 0.9,
+                "topK": 40,
+                "presencePenalty": 0.2,
+                "frequencyPenalty": 0.3
+            }
         )
 
     except TypeError:
