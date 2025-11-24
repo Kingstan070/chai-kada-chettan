@@ -108,7 +108,7 @@ def upload_resume():
 
 
 # ---------- Health Check (for monitoring / uptime checks) ---------- #
-@app.route("/health", methods=["GET"])
+@app.route("/healthz", methods=["GET"])
 def health():
     """
     Lightweight health endpoint:
