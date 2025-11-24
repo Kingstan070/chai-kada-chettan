@@ -104,15 +104,21 @@ def get_roast_and_rating(summary: str) -> Tuple[str, int]:
     prompt = build_roast_prompt(summary)
     safe_prompt, _ = ensure_prompt_within_limit(client, model, prompt)
 
-    response = client.models.generate_content(
-        model=model,
-        contents=safe_prompt,
-        generation_config={
-            "max_output_tokens": 800,  # default is usually lower
-            "temperature": 0.9,        # more creativity
-            "top_p": 0.9,              # wider sampling
-        }
-    )
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=safe_prompt,
+            max_output_tokens=800,  # Works on Render / older versions
+            temperature=0.9,
+            top_p=0.9,
+        )
+
+    except TypeError:
+        # fallback for older version
+        response = client.models.generate_content(
+            model=model,
+            contents=safe_prompt
+        )
 
     raw_text = _extract_text_from_response(
         response).strip() or "No roast generated."
