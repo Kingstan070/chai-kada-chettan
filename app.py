@@ -16,7 +16,7 @@ app.config["SECRET_KEY"] = settings.FLASK_SECRET_KEY
 app.config["MAX_CONTENT_LENGTH"] = settings.MAX_CONTENT_LENGTH_MB * 1024 * 1024
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("chai_kada_chattan")
+logger = logging.getLogger("chai_kada_chettan")
 
 
 @app.route("/", methods=["GET"])
